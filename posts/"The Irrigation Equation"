@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Irrigation Equation - Daley Organics Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .nav-back {
+            color: #059669;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-back:hover {
+            color: #047857;
+        }
+
+        /* Post Header */
+        .post-header {
+            background: #f9fafb;
+            padding: 4rem 0 2rem;
+            text-align: center;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .post-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+        }
+
+        .category {
+            background: #059669;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .date, .read-time {
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        .post-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .post-subtitle {
+            font-size: 1.25rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        /* Post Content */
+        .post-content {
+            padding: 3rem 0;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 300px;
+            background: #e5e7eb;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            margin-bottom: 2rem;
+        }
+
+        .opening-quote {
+            font-size: 1.375rem;
+            color: #374151;
+            font-style: italic;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: #f3f4f6;
+            border-left: 4px solid #059669;
+            border-radius: 8px;
+        }
+
+        .post-content p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: #374151;
+            margin-bottom: 1.5rem;
+        }
+
+        .post-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .highlight-box {
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h4 {
+            color: #047857;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-box p {
+            color: #065f46;
+            margin-bottom: 0;
+        }
+
+        .equation-box {
+            background: #1f2937;
+            color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+        }
+
+        .equation {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #10b981;
+        }
+
+        .equation-desc {
+            color: #d1d5db;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .conclusion-box {
+            background: #1f2937;
+            color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .conclusion-box h4 {
+            color: #ffffff;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .conclusion-box p {
+            color: #d1d5db;
+            margin-bottom: 0;
+        }
+
+        /* Navigation */
+        .post-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .nav-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #059669;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .nav-button:hover {
+            background: #047857;
+        }
+
+        /* Footer */
+        .footer {
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            text-align: center;
+            color: #6b7280;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .post-title {
+                font-size: 2rem;
+            }
+            
+            .post-subtitle {
+                font-size: 1.125rem;
+            }
+            
+            .hero-image {
+                height: 200px;
+                font-size: 4rem;
+            }
+            
+            .opening-quote {
+                font-size: 1.25rem;
+                padding: 1.5rem;
+            }
+            
+            .post-content p {
+                font-size: 1rem;
+            }
+            
+            .post-navigation {
+                flex-direction: column;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <span>🌱</span>
+                <span>Daley Organics</span>
+            </a>
+            <a href="../index.html" class="nav-back">← Back to Blog</a>
+        </div>
+    </nav>
+
+    <header class="post-header">
+        <div class="container">
+            <div class="post-meta">
+                <span class="category">Water Management</span>
+                <span class="date">March 30, 2024</span>
+                <span class="read-time">5 min read</span>
+            </div>
+            <h1 class="post-title">The Irrigation Equation</h1>
+            <p class="post-subtitle">How Understanding Water Tension Transformed Farming</p>
+        </div>
+    </header>
+
+    <main class="post-content">
+        <div class="container">
+            <div class="hero-image">💧</div>
+            
+            <div class="opening-quote">
+                "Your plants know when you're going on vacation. They can sense it in the way you water them the week before—that anxious overwatering, the guilty extra splash. They're reading the signs that you haven't learned to read yourself: the language of water tension."
+            </div>
+
+            <p>Water doesn't just flow downward through soil. It moves in ways that would make a physicist weep and a farmer rich, if only we understood the hidden forces at play. This is the story of water tension—the invisible hand that controls every drop of moisture in your garden, and why mastering it changed agriculture forever.</p>
+
+            <p>Picture this: you're standing in your garden with a hose, wondering why your tomatoes look stressed despite yesterday's thorough watering. Meanwhile, three feet away, your neighbor's identical plants are thriving with what looks like less water. The difference isn't in the amount of water—it's in understanding the equation that governs how plants actually access moisture.</p>
+
+            <div class="equation-box">
+                <div class="equation">Water Availability = Moisture Content × Soil Tension × Root Access</div>
+                <p class="equation-desc">The hidden formula that determines whether your plants thrive or merely survive</p>
+            </div>
+
+            <h3>The Physics of Plant Happiness</h3>
+
+            <p>Water tension in soil works like an invisible tug-of-war. On one side, gravity pulls water downward. On the other side, soil particles and organic matter create microscopic forces that hold water in place. Plants can only access water when these forces are in the sweet spot—not too tight (drought stress) and not too loose (waterlogged roots).</p>
+
+            <p>The breakthrough came when researchers realized that plants don't just need water—they need water at the right tension. Think of it like this: imagine trying to drink through a straw. If the liquid is too thick (high tension), you can't suck it up. If it's too thin and flows too fast (low tension), you can't control it. Plants face the same challenge with soil moisture.</p>
+
+            <div class="highlight-box">
+                <h4>The Goldilocks Zone</h4>
+                <p>The perfect water tension for most plants occurs when soil is at 50-70% of its water-holding capacity. At this level, plants can easily absorb moisture while roots still get the oxygen they need. Too wet, and roots suffocate. Too dry, and plants can't access what water remains.</p>
+            </div>
+
+            <h3>The Vacation Phenomenon</h3>
+
+            <p>Here's why your plants seem to know about your travel plans: stressed gardeners tend to overwater before leaving town. This disrupts the careful balance of water tension that plants have adapted to. When you return, your "well-watered" plants are often more stressed than if you'd watered normally.</p>
+
+            <p>Professional growers learned this lesson the hard way. Early greenhouse operations lost millions trying to automate irrigation with simple timers. Plants weren't dying from lack of water—they were dying from lack of understanding about water tension. The solution wasn't more water; it was smarter water management.</p>
+
+            <h3>The Revolution in the Field</h3>
+
+            <p>Once farmers understood water tension, everything changed. Instead of flood irrigation that wasted water and stressed plants, they developed systems that maintained optimal soil moisture tension. Drip irrigation wasn't just about efficiency—it was about creating the perfect water tension environment.</p>
+
+            <p>Modern precision agriculture takes this further. Soil moisture sensors don't just measure how much water is present—they measure how tightly that water is held by the soil. Irrigation systems can now respond to plant needs in real-time, adjusting not just when to water, but how to maintain the ideal tension.</p>
+
+            <div class="highlight-box">
+                <h4>The Practical Application</h4>
+                <p>For home gardeners, understanding water tension means learning to read your soil, not your calendar. Stick your finger into the soil—if it feels like a wrung-out sponge at 2-3 inches deep, you've found the sweet spot. This simple test reveals more about your plants' water needs than any watering schedule.</p>
+            </div>
+
+            <h3>Beyond Just Watering</h3>
+
+            <p>The water tension principle revolutionized more than irrigation. It explained why adding organic matter improves soil (it modifies water-holding tension), why mulching works (it stabilizes moisture tension), and why some fertilizers work better than others (they affect how roots interact with water tension).</p>
+
+            <p>Soil amendments like coco coir excel precisely because they create ideal water tension—holding moisture when plants need it, releasing it when they don't, and maintaining air spaces for healthy root respiration. It's not magic; it's physics applied with precision.</p>
+
+            <div class="conclusion-box">
+                <h4>The Bottom Line</h4>
+                <p>Your plants aren't asking for more water—they're asking for better water management. Understanding water tension transforms you from someone who waters plants into someone who manages a sophisticated moisture ecosystem. And yes, your plants will still know when you're going on vacation, but now you'll know how to prepare them properly.</p>
+            </div>
+
+            <div class="post-navigation">
+                <a href="../index.html" class="nav-button">← Back to All Stories</a>
+                <a href="#" class="nav-button">Next Story →</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Daley Organics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
