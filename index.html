@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daley Organics Blog - Growing Knowledge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: #6b7280;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-menu a:hover {
+            color: #059669;
+        }
+
+        /* Hero */
+        .hero {
+            background: #f9fafb;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Blog Grid */
+        .blog-section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 240px;
+            background: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+        }
+
+        .card-category {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: #059669;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #1a1a1a;
+        }
+
+        .card-title a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        .card-title a:hover {
+            color: #059669;
+        }
+
+        .card-description {
+            color: #6b7280;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: #059669;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s;
+        }
+
+        .read-more:hover {
+            color: #047857;
+        }
+
+        /* Footer */
+        .footer {
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            color: #6b7280;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #059669;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e5e7eb;
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span>🌱</span>
+                <span>Daley Organics</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>The Science of Growing</h1>
+            <p>Discover the fascinating stories behind the materials and methods that make gardens thrive</p>
+        </div>
+    </section>
+
+    <section class="blog-section">
+        <div class="container">
+            <h2 class="section-title">Featured Stories</h2>
+            <div class="blog-grid">
+                
+                <article class="blog-card">
+                    <div class="card-image">
+                        🥥
+                        <div class="card-category">Soil Amendments</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span>March 25, 2024</span>
+                            <span>8 min read</span>
+                        </div>
+                        <h3 class="card-title">
+                            <a href="posts/coconut-coir-revolution.html">The Coconut Revolution</a>
+                        </h3>
+                        <p class="card-description">How trash became treasure in your garden - the unlikely story of coconut coir's rise from industrial waste to gardening gold.</p>
+                        <a href="posts/coconut-coir-revolution.html" class="read-more">Read Story →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="card-image">
+                        🧪
+                        <div class="card-category">Plant Nutrition</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span>March 28, 2024</span>
+                            <span>6 min read</span>
+                        </div>
+                        <h3 class="card-title">
+                            <a href="#" onclick="alert('Post coming soon! Currently in development.')">The NPK Files</a>
+                        </h3>
+                        <p class="card-description">The secret language of fertilizer numbers and what they're really trying to tell your plants.</p>
+                        <a href="#" onclick="alert('Post coming soon! Currently in development.')" class="read-more">Read Story →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="card-image">
+                        🍂
+                        <div class="card-category">Composting</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span>Coming Soon</span>
+                            <span>7 min read</span>
+                        </div>
+                        <h3 class="card-title">
+                            <a href="#">The Decomposition Conspiracy</a>
+                        </h3>
+                        <p class="card-description">Why your compost pile is actually a sophisticated ecosystem orchestrating the circle of life.</p>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="card-image">
+                        💧
+                        <div class="card-category">Water Management</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span>Coming Soon</span>
+                            <span>5 min read</span>
+                        </div>
+                        <h3 class="card-title">
+                            <a href="#">The Irrigation Equation</a>
+                        </h3>
+                        <p class="card-description">How understanding water tension transformed farming and why your plants know when you're going on vacation.</p>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="card-image">
+                        🦠
+                        <div class="card-category">Soil Biology</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span>Coming Soon</span>
+                            <span>9 min read</span>
+                        </div>
+                        <h3 class="card-title">
+                            <a href="#">The Mycorrhizae Mafia</a>
+                        </h3>
+                        <p class="card-description">The underground network that controls more of your garden than you ever imagined.</p>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="card-image">
+                        🌱
+                        <div class="card-category">Seed Science</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span>Coming Soon</span>
+                            <span>6 min read</span>
+                        </div>
+                        <h3 class="card-title">
+                            <a href="#">The Germination Gamble</a>
+                        </h3>
+                        <p class="card-description">Why some seeds wait years to sprout and the evolutionary poker game happening in your seed packet.</p>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <span>🌱</span>
+                    <span>Daley Organics</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#privacy">Privacy</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Daley Organics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
