@@ -1,0 +1,26 @@
+[build]
+  command = "npm run build"
+  destination = "."
+  
+[build.environment]
+  NODE_VERSION = "18"
+
+# Static site configuration
+[build.processing]
+  skip_processing = false
+
+# Headers for better performance
+[[headers]]
+  for = "*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=300"
+    
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+    
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
