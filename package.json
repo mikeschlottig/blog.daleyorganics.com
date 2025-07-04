@@ -1,0 +1,24 @@
+{
+  "name": "blog-daleyorganics",
+  "version": "1.0.0",
+  "description": "Daley Organics Blog - Static HTML Site",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'No build needed for static site' && exit 0",
+    "start": "echo 'This is a static site - deploy directly'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikeschlottig/blog.daleyorganics.com.git"
+  },
+  "keywords": [
+    "blog",
+    "organic",
+    "gardening",
+    "static-site"
+  ],
+  "author": "Mike Schlottig",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {}
+}
